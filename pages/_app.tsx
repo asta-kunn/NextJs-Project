@@ -1,10 +1,25 @@
-import Nav from '../components/Nav'
+import { FC } from 'react';
+import type { AppProps } from 'next/app';
+import { ToDoContextProvider } from '@components/context';
+import { Head } from '@components/common';
+import '../styles/globals.css';
 
-const News = () => (
-  <>
-    <Nav />
-    <p>Hello, I'm the news page</p>
-  </>
-)
+const Noop: FC = ({ children }) => <>{children}</>;
 
-export default News
+const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
+  const Layout = (Component as any).Layout || Noop;
+
+  return (
+    <>
+      <Head />
+
+      <ToDoContextProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ToDoContextProvider>
+    </>
+  );
+};
+
+export default MyApp;
