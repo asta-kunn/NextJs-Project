@@ -10,7 +10,7 @@ const Footer = (): JSX.Element => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Powered by
+        Deploy by iqi
         <span className="ml-1">
           <VercelIcon className="w-16" />
         </span>
